@@ -14,8 +14,9 @@ jobs:
 
       - name: Trigger Webhook
         env:
-          WEBHOOK_URL: ${{ secrets.DEPLOY_HOOK }}  # Använder org-secret för webhook-URL
+          WEBHOOK_URL: ${{ secrets.DEPLOY_HOOK }}
         run: |
+          REPO_HTTPS_URL="https://github.com/${{ github.repository }}.git"
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"repository": {"name": "${{ github.repository }}", "ssh_url": "${{ github.repositoryUrl }}", "ref": "refs/heads/main", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
+            -d '{"repository": {"name": "${{ github.event.repository.name }}", "ssh_url": "$REPO_HTTPS_URL", "ref": "refs/heads/main", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
             $WEBHOOK_URL
