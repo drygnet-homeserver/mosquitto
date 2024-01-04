@@ -3,7 +3,7 @@
 Denna konfiguration beskriver uppsättningen av en Mosquitto MQTT-broker som körs i en Docker-container och använder ett macvlan-nätverk för att tillåta direkt kommunikation med andra enheter på det lokala nätverket.
 
 ## Installation
-Work in progress.. still trying to find a port.9002
+Work in progress.. still trying to find a port.90033
 
 
 ## Docker Compose
