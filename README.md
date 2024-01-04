@@ -1,4 +1,4 @@
-# MQTT Broker med Docker och Macvlan
+# MQTT Broker med Docker och Macvlan.
 
 Denna konfiguration beskriver uppsättningen av en Mosquitto MQTT-broker som körs i en Docker-container och använder ett macvlan-nätverk för att tillåta direkt kommunikation med andra enheter på det lokala nätverket.
 
