@@ -18,5 +18,5 @@ jobs:
         run: |
           REPO_HTTPS_URL="https://github.com/${{ github.repository }}.git"
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"ref": "refs/heads/main", "repository": {"name": "${{ github.event.repository.name }}", "ssh_url": "$REPO_HTTPS_URL", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
+            -d '{"ref": "refs/heads/main", "repository": {"name": "${{ github.event.repository.name }}", "ssh_url": "REPO_HTTPS_URL", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
             $WEBHOOK_URL
