@@ -1,9 +1,9 @@
 name: Webhook Trigger on Push
 
-on: 
+on:
   push:
     branches:
-      - main  
+      - main  # Triggar för pushar till main-grenen
 
 jobs:
   webhook:
@@ -17,5 +17,5 @@ jobs:
           WEBHOOK_URL: ${{ secrets.DEPLOY_HOOK }}  # Använder org-secret för webhook-URL
         run: |
           curl -X POST -H "Content-Type: application/json" \
-            -d '{"repository": {"name": "${{ github.repository }}", "ssh_url": "${{ github.repositoryUrl }}", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
+            -d '{"repository": {"name": "${{ github.repository }}", "ssh_url": "${{ github.repositoryUrl }}", "ref": "refs/heads/main", "pusher": {"email": "${{ github.actor }}@users.noreply.github.com"}}}' \
             $WEBHOOK_URL
