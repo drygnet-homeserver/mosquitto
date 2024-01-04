@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: unless-stopped
+    networks:
+      my_macvlan_net:
+        ipv4_address: 192.168.100.200 #First outside of DHCP
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./data:/mosquitto/data
+      - ./log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+
+networks:
+  my_macvlan_net:
+    external: true
